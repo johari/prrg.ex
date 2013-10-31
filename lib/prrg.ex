@@ -1,6 +1,6 @@
 defmodule Prrg do
 
-  defmacro prrg(ret_val, expr) do
+  defmacro prrg(expr, ret_val) do
     # IO.puts(inspect expr)
     def_name = (elem expr, 0) |> atom_to_binary
     args = elem(expr, 2)
@@ -20,9 +20,10 @@ defmodule Prrg do
 
   def main(args) do
     IO.puts "Sample implementation of prorogues"
-    from = prrg "Nima Johari", get_header(input, "from")
-    subject = prrg "Prorogues in Elixir", get_header(input, "subject")
-    body = prrg "Nice, huh?", get_body(input)
+    from = prrg get_header(input, "from"), "Nima Johari"
+    subject = get_header(input, "subject") |>
+              prrg "Prorogues in Elixir"
+    body = prrg get_body(input), "Nice, huh?"
   
     IO.puts("From: " <> from)
     IO.puts("Subject: " <> subject)
