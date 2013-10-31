@@ -20,9 +20,15 @@ defmodule Prrg do
 
   def main(args) do
     IO.puts "Sample implementation of prorogues"
+
+    # prrg f(x), "return value"
     from = prrg get_header(input, "from"), "Nima Johari"
+
+    # this works as well
+    # f(x) |> prrg "ret value"
     subject = get_header(input, "subject") |>
               prrg "Prorogues in Elixir"
+
     body = prrg get_body(input), "Nice, huh?"
   
     IO.puts("From: " <> from)
