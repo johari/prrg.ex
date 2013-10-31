@@ -23,3 +23,7 @@ Subject: Prorogues in Elixir
 Nice, huh?
 nima@jubuntu:/tmp/prrg$ 
 ```
+
+# Also see
+* [An example](/example.exs)
+* [The implementation](/lib/prrg.ex)
