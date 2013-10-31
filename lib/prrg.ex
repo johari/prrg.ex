@@ -1,11 +1,10 @@
 defmodule Prrg do
 
   defmacro prrg(expr, ret_val) do
-    # IO.puts(inspect expr)
     def_name = (elem expr, 0) |> atom_to_binary
     args = elem(expr, 2)
     arg_list = Enum.with_index(args) |>
-               Enum.map(fn({x, y}) -> "arg#{y}" end) |>
+               Enum.map(fn({_, y}) -> "arg#{y}" end) |>
                Enum.join ", "
 
     expanded_def = """
@@ -13,7 +12,7 @@ defmodule Prrg do
         #{inspect ret_val}
       end
       """
-    IO.write expanded_def
+    IO.write :stderr, expanded_def
 
     ret_val
   end
